@@ -1,0 +1,319 @@
+body {
+    background-image: url(/img/Background_Image.png);
+    background-color: #000;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    margin-left: 150px;
+    margin-right: 150px;
+    max-width: 100%;
+}
+
+.link-menu {
+    /* Style for "{Menu}" */
+    color: #ffffff;
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 90px;
+    font-weight: 00;
+    text-transform: uppercase;
+    letter-spacing: 29px;
+}
+
+.link-order {
+    /* Style for "Order Now" */
+    color: #e8e8e8;
+    font-family: "Space Mono";
+    font-size: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.link-phone {
+    /* Style for "Call 0743" */
+    color: #fbc545;
+    font-family: "Space Mono";
+    font-size: 30px;
+    font-weight: 700;
+    font-family: "Space Mono - Regular";
+    font-family: "Space Mono";
+    letter-spacing: -2px;
+}
+
+.img-loho {
+    /* Style for "Place Your" */
+    width: 300px;
+    height: 200px;
+}
+
+.link-login {
+    /* Style for "Or Log in" */
+    font-size: 30px;
+    color: #e8e8e8;
+    font-weight: 400;
+    letter-spacing: -4.17px;
+    font-family: "Space Mono";
+    text-align: right;
+}
+
+.span-call {
+    /* Style for "Call 0743" */
+    font-size: 30px;
+    color: #e8e8e8;
+    font-weight: 400;
+    font-family: "Space Mono";
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu-bar {
+    margin-top: 50px;
+}
+
+.div-menu {
+    margin-top: 35px;
+}
+
+.div-menu-pizza {
+    display: flex;
+    justify-content: space-around;   
+}
+
+.img-pizza {
+    /* Style for "Place Your" */
+    width: 350px;
+    height: 350px;
+    display:block; margin:0 auto;    
+}
+
+
+.menu-pizza {
+    margin-top: 150px;
+}
+
+.pizza-title {
+    /* Style for "Meat Lover" */
+    color: #ffffff;
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 50px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.pizza-text {
+    /* Style for "- Smoked B" */
+    color: #ffffff;
+    font-family: "Space Mono";
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.pizza-p {
+    color: #ffffff;
+    font-family: "Space Mono";
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.price {
+    /* Style for "- Smoked B" */
+    color: #ecc451;
+    font-family: "Space Mono";
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.classics {
+    /* Style for "CLASSICS" */
+    color: #ffffff;
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 71px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+        /* Style for "Rectangle" */
+    width: 400px;
+    height: 90px;
+   background-color: rgba(236, 196, 81, 0.5);
+}
+
+.othet-product {
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu-other {
+    margin-top: 150px;
+}
+
+.line {
+    /* Style for "Shape" */
+    width: 100%;
+    height: 1px;
+    background-color: #ffffff;
+    opacity: 0.35;
+    margin-top: 150px;
+}
+
+@media screen and (max-width: 1440px) {
+.link-menu {
+    font-size: 40px;
+    }
+
+.link-order {
+    font-size: 30px;
+    }
+
+.link-phone {
+    font-size: 20px;
+    }
+ 
+.span-call {
+    font-size: 20px;  
+    }
+    
+.link-login {
+    font-size: 20px;
+    }
+    
+.img-pizza {
+    width: 300px;
+    height: 300px;
+    display:block; margin:0 auto;    
+    }
+    
+.pizza-title {
+    font-size: 35px;
+    }
+    
+.pizza-text {
+    font-size: 20px;
+    }
+
+.classics {
+    font-size: 50px;
+    width: 280px;
+    height: 70px;
+    }
+}
+
+@media screen and (width: 1024px) {
+.container {
+    margin-left: 100px;
+    margin-right: 100px;
+    max-width: 100%;
+    }
+}
+
+@media screen and (width: 768px) {
+.container {
+    margin-left: 0px;
+    margin-right: 0px;
+    }
+.link-menu {
+    font-size: 40px;
+    }
+
+.link-order {
+    font-size: 30px;
+    }
+
+.link-phone {
+    font-size: 20px;
+    }
+ 
+.span-call {
+    font-size: 20px;  
+    }
+    
+.link-login {
+    font-size: 20px;
+    }
+ .img-loho {
+    width: 150px;
+    height: 100px;
+}
+.img-pizza {
+    width: 200px;
+    height: 200px;
+    display:block; margin:0 auto;    
+    }
+    
+.pizza-title {
+    font-size: 25px;
+    }
+    
+.pizza-text {
+    font-size: 15px;
+    }
+.pizza-p {
+    font-size: 15px;
+    }
+.classics {
+    font-size: 40px;
+    width: 240px;
+    height: 50px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+.container {
+    margin-left: 0px;
+    margin-right: 0px;
+    text-align: center
+    }
+    
+.menu {
+    display: block;
+        
+    }
+    
+.div-menu {
+    margin-top: 70px;
+    margin-left: 30px;
+    margin-bottom: 70px;
+    }
+
+.div-menu-pizza {
+        display: block;
+    }
+.othet-product {
+        display: block;
+    }
+}
+
+@media screen and (width: 320px) {
+.container {
+    margin-left: 0px;
+    margin-right: 0px;
+    text-align: center
+    }
+    
+.menu {
+    display: block;
+        
+    }
+    
+.div-menu {
+    margin-top: 70px;
+    margin-left: 10px;
+    margin-bottom: 70px;
+    }
+
+.div-menu-pizza {
+        display: block;
+    }
+.othet-product {
+        display: block;
+    }
+}
