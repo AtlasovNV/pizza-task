@@ -33,7 +33,7 @@ function addToCart(e){
 		cartData[itemId] = [itemTitle, itemPrice, 1];
 	}
 	// Обновляем данные в LocalStorage
-	if(!setCartData(cartData)){ 
+	if(!setCartData(cartData)){
 		this.disabled = false; // разблокируем кнопку после обновления LS
 		cartCont.innerHTML = 'Product added to cart.';
 		setTimeout(function(){
@@ -48,20 +48,28 @@ for(var i = 0; i < itemBox.length; i++){
 }
 // Открываем корзину со списком добавленных товаров
 function openCart(e){
-	
+
 	var cartData = getCartData(), // вытаскиваем все данные корзины
 			totalItems = '';
 	console.log(JSON.stringify(cartData));
 	// если что-то в корзине уже есть, начинаем формировать данные для вывода
 	if(cartData !== null){
 		totalItems = '<table class="shopping_list"><tr><th>Name</th><th>Price</th><th>Number</th></tr>';
-		for(var items in cartData){
-			totalItems += '<tr>';
-			for(var i = 0; i < cartData[items].length; i++){
-				totalItems += '<td>' + cartData[items][i] + '</td>';
-			}
-			totalItems += '</tr>';
+		var totalCount = 0;
+		var totalPrice = 0;
+		for (var itemCode in cartData) {
+		   var itemData = cartData[itemCode];
+		   var itemName = itemData[0];
+		   var itemCount = itemData[2];
+		   var itemPriceText = itemData[1];
+		   var itemPrice = parseFloat(itemPriceText.replace('$',''));
+		   var dilivery = 10;
+		   totalCount += itemCount;
+		   totalPrice += itemCount * itemPrice;
+
+		   totalItems += `<tr><td>${itemName}</td><td>${itemPriceText}</td><td>${itemCount}</td></tr>`;
 		}
+		totalItems += `<tr><td>Total:</td><td>$${totalPrice}</td><td>${totalCount}</td><td>+ Dilivery 10$</td></tr>`;
 		totalItems += '<table>';
 		cartCont.innerHTML = totalItems;
 	} else {
@@ -75,5 +83,5 @@ addEvent(d.getElementById('checkout'), 'click', openCart);
 /* Очистить корзину */
 addEvent(d.getElementById('clear_cart'), 'click', function(e){
 	localStorage.removeItem('cart');
-	cartCont.innerHTML = 'Cart emptied.';	
+	cartCont.innerHTML = 'Cart emptied.';
 });
