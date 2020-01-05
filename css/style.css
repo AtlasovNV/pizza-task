@@ -83,6 +83,7 @@ a {
 .div-menu-pizza {
     display: flex;
     justify-content: space-around;   
+    text-align: center
 }
 
 .img-pizza {
@@ -315,5 +316,25 @@ a {
     }
 .othet-product {
         display: block;
-    }
+    }св
+    
+}
+
+.basket {
+
+    color: azure
+}
+
+.btr-basket {
+    /* Style for "CLASSICS" */
+    color: #ffffff;
+    text-transform: uppercase;
+    /* Style for "Rectangle" */
+   background-color: #000;
+}
+
+
+
+.div-menu-other {
+    text-align: center;
 }
