@@ -4,60 +4,68 @@
 {% block content %}
 <hr class="line">
 
-<section class="menu-pizza" id="pizza">
-    <div class="div-menu-pizza">
-        {% for pizza in ProductPizza %}
-        <div class="meat">
-            <h2 class="pizza-title">{{ pizza.name }}</h2>
-            <img class="img-pizza" src="/media/{{ pizza.image }}" alt="pizza">
-            <h2 class="pizza-text">{{ pizza.short_desc }}</h2>
-            <p class="pizza-p">{{ pizza.description }}</p>
-            <p class="price">${{ pizza.price }}</p>
-            <button class="btr-basket">Add order</button>
+        <div class="basket">
+            <p><button class="btr-basket" id="checkout">Check order</button> &nbsp;
+                <button class="btr-basket" data-id="meat">Order</button> &nbsp;
+                <button class="btr-basket" id="clear_cart">Trash</button>
+            </p>
+            <div id="cart_content"></div>
         </div>
-        {% endfor %}
-    </div>
-</section>
 
-<hr class="line">
+        <section class="menu-pizza">
+            <div class="div-menu-pizza">
+                {% for pizza in ProductPizza %}
+                    <div class="meat item_box">
+                        <h2 class="pizza-title item_title">{{ pizza.name }}</h2>
+                        <img class="img-pizza" src="{% static 'img/pizza.png' %}" alt="pizza">
+                        <h2 class="pizza-text">{{ pizza.short_desc }}</h2>
+                        <p class="pizza-p">{{ pizza.description }}</p>
+                        <p class="price item_price">${{ pizza.price }}</p>
+                        <button class="add_item btr-basket" data-id=" {{ pizza.name }} ">Add order</button>
+                </div>
+                    {% endfor %}
+            </div>
+        </section>
 
-<section class="menu-other">
-    <div class="div-menu-other">
-        <div class="othet-product">
-            <div class="div-classics">
-                <h3 class="classics">Classics</h3>
-                {% for classics in ProductClassics %}
-                <div class="item_box">
-                    <h4 class="pizza-text">{{ classics.name }}</h4>
-                    <p class="pizza-p">{{ classics.description }}</p>
-                    <p class="price">${{ classics.price }}</p>
-                    <button class="btr-basket">Add order</button>
+           <hr class="line">
+
+        <section class="menu-other">
+            <div class="div-menu-other">
+                <div class="othet-product">
+                    <div class="div-classics">
+                        <h3 class="classics">Classics</h3>
+                            {% for classics in ProductClassics %}
+                            <div class="item_box">
+                                <h4 class="pizza-text item_title">{{ classics.name }}</h4>
+                                <p class="pizza-p">{{ classics.description }}</p>
+                                <p class="price item_price">${{ classics.price }}</p>
+                                <button class="add_item btr-basket" data-id="{{ classics.name }}">Add order</button>
+                            </div>
+                            {% endfor %}
+                    </div>
+                    <div class="div-classics">
+                        <h3 class="classics">Specials</h3>
+                        {% for specials in ProductSpecials %}
+                            <div class="item_box">
+                                <h4 class="pizza-text item_title">{{ specials.name }}</h4>
+                                <p class="pizza-p">{{ specials.description }}</p>
+                                <p class="price item_price">${{ specials.price }}</p>
+                                <button class="add_item btr-basket" data-id="{{ specials.name }}">Add order</button>
+                            </div>
+                            {% endfor %}
+                    </div>
+                    <div class="div-classics">
+                        <h3 class="classics">Drinks</h3>
+                            {% for drinks in ProductDrinks %}
+                                <div class="item_box">
+                                <h4 class="pizza-text item_title">{{ drinks.name }}</h4>
+                                <p class="pizza-p">{{ drinks.description }}</p>
+                                <p class="price item_price">${{ drinks.price }}</p>
+                                <button class="add_item btr-basket" data-id="{{ drinks.name }}">Add order</button>
+                            </div>
+                            {% endfor %}
+                    </div>
                 </div>
-                {% endfor %}
             </div>
-            <div class="div-classics">
-                <h3 class="classics">Specials</h3>
-                {% for specials in ProductSpecials %}
-                <div class="item_box">
-                    <h4 class="pizza-text">{{ specials.name }}</h4>
-                    <p class="pizza-p">{{ specials.description }}</p>
-                    <p class="price">${{ specials.price }}</p>
-                    <button class="btr-basket">Add order</button>
-                </div>
-                {% endfor %}
-            </div>
-            <div class="div-classics">
-                <h3 class="classics">Drinks</h3>
-                {% for drinks in ProductDrinks %}
-                <div class="item_box">
-                    <h4 class="pizza-text">{{ drinks.name }}</h4>
-                    <p class="pizza-p">{{ drinks.description }}</p>
-                    <p class="price">${{ drinks.price }}</p>
-                    <button class="btr-basket">Add order</button>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 {% endblock %}

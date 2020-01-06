@@ -66,10 +66,11 @@ function openCart(e){
 		   var dilivery = 10;
 		   totalCount += itemCount;
 		   totalPrice += itemCount * itemPrice;
+		   var total = totalPrice + dilivery;
 
 		   totalItems += `<tr><td>${itemName}</td><td>${itemPriceText}</td><td>${itemCount}</td></tr>`;
 		}
-		totalItems += `<tr><td>Total:</td><td>$${totalPrice}</td><td>${totalCount}</td><td>+ Dilivery 10$</td></tr>`;
+		totalItems += `<tr><td>Subtotal:</td><td>${totalPrice}</td><td>${totalCount}</td><td>+ Dilivery 10$</td><br></tr><tr><td>Total:</td><td>${total}</td></tr>`;
 		totalItems += '<table>';
 		cartCont.innerHTML = totalItems;
 	} else {

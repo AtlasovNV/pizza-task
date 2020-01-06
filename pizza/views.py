@@ -13,9 +13,9 @@ def main(request):
     classics = ProductClassics.objects.all()
     specials = ProductSpecials.objects.all()
     drinks = ProductDrinks.objects.all()
+
     content = {'ProductPizza': pizza, 'ProductClassics': classics,
                'ProductSpecials': specials, 'ProductDrinks': drinks}
-
 
     return render(request, 'pizza/index.html', content)
 
