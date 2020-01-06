@@ -165,6 +165,15 @@ a {
     margin-top: 150px;
 }
 
+.div-classics {
+    width: 350px;
+}
+.specials {
+    width: 350px;
+}
+.drinks {
+    width: 350px;
+}
 @media screen and (max-width: 1440px) {
 .link-menu {
     font-size: 40px;

@@ -1,11 +1,11 @@
-from django.contrib import admin
 from django.urls import path, include
-from django.conf import settings
 from django.conf.urls.static import static
-import pizza.views as portfolio
+from django.conf import settings
 
-app_name = 'portfolio'
+import pizza.views as pizza
+
+app_name = 'pizza'
 
 urlpatterns = [
-    path('', portfolio.main, name='index'),
+    path('', pizza.main, name='index'),
 ]

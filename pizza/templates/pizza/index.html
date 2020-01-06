@@ -1,132 +1,63 @@
 {% extends 'pizza/base.html' %}
 {% load static %}
 
-    {% block content %}
-        <hr class="line">
-        
-        <div class="basket">
-        <p><button class="btr-basket" id="checkout">Check order</button> &nbsp; <button class="btr-basket" data-id="meat">Order</button> &nbsp; <button class="btr-basket" id="clear_cart">Trash</button></p>
-        <div id="cart_content"></div>
+{% block content %}
+<hr class="line">
+
+<section class="menu-pizza" id="pizza">
+    <div class="div-menu-pizza">
+        {% for pizza in ProductPizza %}
+        <div class="meat">
+            <h2 class="pizza-title">{{ pizza.name }}</h2>
+            <img class="img-pizza" src="/media/{{ pizza.image }}" alt="pizza">
+            <h2 class="pizza-text">{{ pizza.short_desc }}</h2>
+            <p class="pizza-p">{{ pizza.description }}</p>
+            <p class="price">${{ pizza.price }}</p>
+            <button class="btr-basket">Add order</button>
         </div>
-   
-        <section class="menu-pizza" id="pizza">
-            <div class="div-menu-pizza">
-                <div class="meat item_box">
-                    <h2 class="pizza-title item_title">Meat lover</h2>
-                    <img class="img-pizza" src="{% static '/img/Place_Your_Image_Here_(Double_Click_to_Edit).png' %}" alt="pizza">
-                    <h2 class="pizza-text">- Smoked Beef -<br>- Parmesan - Basil -</h2>
-                    <p class="pizza-p">(Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit.)</p>
-                    <p class="price item_price">$25.0</p>
-                    <button class="add_item btr-basket" data-id="meat">Add order</button>
-                </div>
+        {% endfor %}
+    </div>
+</section>
 
-                <div class="meat item_box">
-                    <h2 class="pizza-title item_title">Fruit Lover</h2>
-                    <img class="img-pizza" src="{% static '/img/Place_Your_Image_Here_(Double_Click_to_Edit).png' %}" alt="pizza">
-                    <h2 class="pizza-text">- Tomatto - Calamari -<br>- Mashroom -</h2>
-                    <p class="pizza-p">(Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit.)</p>
-                    <p class="price item_price">$25.0</p>
-                    <button class="add_item btr-basket" data-id="fruit">Add order</button>
-                </div>
+<hr class="line">
 
-                <div class="meat item_box item_title">
-                    <h2 class="pizza-title item_title">Veggie Lover</h2>
-                    <img class="img-pizza" src="{% static '/img/Place_Your_Image_Here_(Double_Click_to_Edit).png' %}" alt="pizza">
-                    <h2 class="pizza-text">- Olives - Bresaola -<br>- Parmesan -</h2>
-                    <p class="pizza-p">(Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit.)</p>
-                    <p class="price item_price">$25.0</p>
-                    <button class="add_item btr-basket" data-id="veggie">Add order</button>
+<section class="menu-other">
+    <div class="div-menu-other">
+        <div class="othet-product">
+            <div class="div-classics">
+                <h3 class="classics">Classics</h3>
+                {% for classics in ProductClassics %}
+                <div class="item_box">
+                    <h4 class="pizza-text">{{ classics.name }}</h4>
+                    <p class="pizza-p">{{ classics.description }}</p>
+                    <p class="price">${{ classics.price }}</p>
+                    <button class=" btr-basket">Add order</button>
                 </div>
+                {% endfor %}
             </div>
-        </section>
-        
-           <hr class="line">
-   
-        <section class="menu-other">
-            <div class="div-menu-other">
-                <div class="othet-product">
-                    <div class="div-classics">
-                        <h3 class="classics">Classics</h3>
-                        
-                        <div class="item_box">
-                        <a href="#">
-                            <h4 class="pizza-text item_title">Double Cheese</h4>
-                        </a>
-                        <p class="pizza-p">(Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit.)</p>
-                        <p class="price item_price">$20.0</p>
-                        <button class="add_item btr-basket" data-id="cheese">Add order</button>
-                        </div>
-                        
-                        <div class="item_box">
-                        <a href="#"><h4 class="pizza-text item_title">Margherita</h4>
-                        </a>
-                        <p class="pizza-p">(Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit.)</p>
-                        <p class="price item_price">$18.0</p>
-                        <button class="add_item btr-basket" data-id="margherita">Add order</button>
-                        </div>
-                        
-                        <div class="item_box">
-                        <a href="#"><h4 class="pizza-text item_title">Chicken</h4>
-                        </a>
-                        <p class="pizza-p">(Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit.)</p>
-                        <p class="price item_price">$20.0</p>
-                        <button class="add_item btr-basket" data-id="chicken">Add order</button>
-                        </div>
-                    </div>
-
-                    <div class="specials">
-                        <h3 class="classics">Specials</h3>
-                        
-                        <div class="item_box">
-                        <a href="#">
-                            <h4 class="pizza-text item_title">Mexican</h4>
-                        </a>
-                        <p class="pizza-p">(Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit.)</p>
-                        <p class="price item_price">$20.0</p>
-                        <button class="add_item btr-basket" data-id="mexican">Add order</button>
-                        </div>
-                        
-                        <div class="item_box">
-                        <a href="#">
-                            <h4 class="pizza-text item_title">Chicken BBQ</h4>
-                        </a>
-                        <p class="pizza-p">(Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit.)</p>
-                        <p class="price item_price">$25.0</p>
-                        <button class="add_item btr-basket" data-id="bbq">Add order</button>
-                        </div>
-                        
-                        <div class="item_box">
-                        <a href="#">
-                            <h4 class="pizza-text item_title">Vegetarian</h4>
-                        </a>
-                        <p class="pizza-p">(Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit.)</p>
-                        <p class="price item_price">$15.0</p>
-                        <button class="add_item btr-basket" data-id="vegetarian">Add order</button>
-                        </div>
-                    </div>
-
-                    <div class="drinks">
-                        <h3 class="classics">Drinks</h3>
-                        
-                        <div class="item_box">
-                        <a href="#">
-                            <h4 class="pizza-text item_title">Beer</h4>
-                        </a>
-                        <p class="pizza-p">(Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit.)</p>
-                        <p class="price item_price">$25.0</p>
-                        <button class="add_item btr-basket" data-id="beer">Add order</button>
-                        </div>
-                        
-                        <div class="item_box">
-                        <a href="#">
-                            <h4 class="pizza-text item_title">Water</h4>
-                        </a>
-                        <p class="pizza-p">(Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit.)</p>
-                        <p class="price item_price">$10.0</p>
-                        <button class="add_item btr-basket" data-id="water">Add order</button>
-                        </div>
-                    </div>
+            <div class="div-classics">
+                <h3 class="classics">Specials</h3>
+                {% for specials in ProductSpecials %}
+                <div class="item_box">
+                    <h4 class="pizza-text">{{ specials.name }}</h4>
+                    <p class="pizza-p">{{ specials.description }}</p>
+                    <p class="price">${{ specials.price }}</p>
+                    <button class=" btr-basket">Add order</button>
                 </div>
+                {% endfor %}
             </div>
-        </section>
-    {% endblock %}
+            <div class="div-classics">
+                <h3 class="classics">Drinks</h3>
+                {% for drinks in ProductDrinks %}
+                <div class="item_box">
+                    <h4 class="pizza-text">{{ drinks.name }}</h4>
+                    <p class="pizza-p">{{ drinks.description }}</p>
+                    <p class="price">${{ drinks.price }}</p>
+                    <button class=" btr-basket">Add order</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
