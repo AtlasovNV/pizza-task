@@ -39,9 +39,28 @@ a {
     font-weight: 700;
     font-family: "Space Mono - Regular";
     font-family: "Space Mono";
-    letter-spacing: -2px;
+
+}
+.a-exit {
+    /* Style for "Call 0743" */
+    color: #ffffff;
+    font-family: "Space Mono";
+    font-size: 30px;
+    font-weight: 700;
+    font-family: "Space Mono - Regular";
+    font-family: "Space Mono";
 }
 
+.span-or {
+    /* Style for "Call 0743" */
+    color: #fbc545;
+    font-family: "Space Mono";
+    font-size: 30px;
+    font-weight: 700;
+    font-family: "Space Mono - Regular";
+    font-family: "Space Mono";
+    letter-spacing: -2px;
+}
 .img-loho {
     /* Style for "Place Your" */
     width: 300px;

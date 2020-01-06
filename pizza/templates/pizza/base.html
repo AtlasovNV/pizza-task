@@ -15,9 +15,23 @@
         <header class="header_area">
             <div class="menu-bar">
                 <div class="menu">
-                    <div><a class="link-logo" href="#"><img class="img-loho" src="{% static '/img/logo.png' %}" alt=""></a></div>
-                    <div class="div-menu"><a class="link-menu" href="#">{Menu}</a></div>
-                    <div class="order-phone"><a class="link-order" href="#pizza">Order now</a> <br> <span class="span-call">Call</span><a class="link-phone" href="tel:0743 888 555">0743 888 555</a> <br> <a class="link-login" href="">Or log in to</a></div>
+                    <div><a class="link-logo" href="/"><img class="img-loho" src="{% static '/img/logo.png' %}" alt=""></a></div>
+                    <div class="div-menu"><a class="link-menu" href="/">{Menu}</a></div>
+                    <div class="order-phone"><a class="link-order" href="#pizza">Order now</a> <br>
+                        <span class="span-call">Call</span>
+                        <a class="link-phone" href="tel:0743 888 555">0743 888 555</a> <br>
+
+       {% if user.is_authenticated %}
+    <span class="span-or">Welcom, {{ user.username }}!</span>
+      <br>
+      <a class="a-exit" href="/logout">Exit</a>
+
+    {% else %}
+      <a class="link-login"  href="/login">log in</a> <br> <span class="span-or">Or</span>
+      <br>
+      <a class="link-login" href="/register">Registration</a>
+    {% endif %}
+
                 </div>
             </div>
         </header>
@@ -29,3 +43,4 @@
     </div>
 </body>
 </html>
+

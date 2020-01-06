@@ -8,4 +8,7 @@ app_name = 'pizza'
 
 urlpatterns = [
     path('', pizza.main, name='index'),
+    path('register/', pizza.RegisterFormView.as_view()),
+    path('login/', pizza.LoginFormView.as_view()),
+    path('logout/', pizza.LogoutView.as_view()),
 ]
