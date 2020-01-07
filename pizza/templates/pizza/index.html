@@ -3,16 +3,24 @@
 
 {% block content %}
 <hr class="line">
-
         <div class="basket">
             <p><button class="btr-basket" id="checkout">Check order</button> &nbsp;
-                <button class="btr-basket" data-id="meat">Order</button> &nbsp;
                 <button class="btr-basket" id="clear_cart">Trash</button>
             </p>
             <div id="cart_content"></div>
         </div>
 
-        <section class="menu-pizza">
+    <form method="post" action="mail/">
+                {% csrf_token %}
+            <div class="div-form">
+                    <input name="name" placeholder="name" type="text" class="text" /> <br>
+                    <input name="sender" placeholder="email" type="text" class="text" /> <br>
+                    <input name="adress" placeholder="adres" type="text" class="text" />
+                </div>
+                <button class="btr-basket" >Order</button> &nbsp;
+        </form>
+
+        <section class="menu-pizza" id="pizza">
             <div class="div-menu-pizza">
                 {% for pizza in ProductPizza %}
                     <div class="meat item_box">
@@ -23,7 +31,7 @@
                         <p class="price item_price">${{ pizza.price }}</p>
                         <button class="add_item btr-basket" data-id=" {{ pizza.name }} ">Add order</button>
                 </div>
-                    {% endfor %}
+                {% endfor %}
             </div>
         </section>
 

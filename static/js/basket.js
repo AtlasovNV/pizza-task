@@ -68,9 +68,18 @@ function openCart(e){
 		   totalPrice += itemCount * itemPrice;
 		   var total = totalPrice + dilivery;
 
-		   totalItems += `<tr><td>${itemName}</td><td>${itemPriceText}</td><td>${itemCount}</td></tr>`;
+		   totalItems += `<tr>
+			<td>${itemName}<input type="hidden" name="item_name" value="${itemName}"></td>
+			<td>${itemPriceText}<input type="hidden" name="itemPriceText" value="${itemPriceText}"></td>
+			<td>${itemCount}<input type="hidden" name="itemCount" value="${itemCount}"></td>
+			</tr>`;
 		}
-		totalItems += `<tr><td>Subtotal:</td><td>${totalPrice}</td><td>${totalCount}</td><td>+ Dilivery 10$</td><br></tr><tr><td>Total:</td><td>${total}</td></tr>`;
+		totalItems += `<tr>
+			<td>Subtotal:</td><td>${totalPrice}<input type="hidden" name="totalPrice" value="${totalPrice}"></td>
+			<td>${totalCount}<input type="hidden" name="totalCount" value="${totalCount}"></td>
+			<td>+ Dilivery 10$</td>
+			<br></tr>
+			<tr><td>Total:</td><td>${total}<input type="hidden" name="total" value="${total}"></td></tr>`;
 		totalItems += '<table>';
 		cartCont.innerHTML = totalItems;
 	} else {
@@ -79,6 +88,7 @@ function openCart(e){
 	}
 	return false;
 }
+
 /* Открыть корзину */
 addEvent(d.getElementById('checkout'), 'click', openCart);
 /* Очистить корзину */
