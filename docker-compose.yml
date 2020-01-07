@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+   web:
+    build: ./pizza/app
+    command: gunicorn pizzat.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - ./pizza/app/:/usr/src/app/
+    expose:
+      - 8000
+   nginx:
+    build: ./nginx
+    volumes:
+      - ./pizza/app/:/usr/src/app/
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+
+
