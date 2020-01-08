@@ -3,14 +3,18 @@
 
 {% block content %}
 <hr class="line">
+
         <div class="basket">
             <p><button class="btr-basket" id="checkout">Check order</button> &nbsp;
                 <button class="btr-basket" id="clear_cart">Trash</button>
             </p>
-            <div id="cart_content"></div>
+
         </div>
 
-    <form method="post" action="mail/">
+ <form method="post" action="order/">
+     <div class="basket">
+        <div id="cart_content"></div>
+     </div>
                 {% csrf_token %}
             <div class="div-form">
                     <input name="name" placeholder="name" type="text" class="text" /> <br>

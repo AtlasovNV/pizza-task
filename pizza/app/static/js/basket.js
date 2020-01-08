@@ -56,7 +56,8 @@ function openCart(e){
 	if(cartData !== null){
 		totalItems = '<table class="shopping_list"><tr><th>Name</th><th>Price</th><th>Number</th></tr>';
 		var totalCount = 0;
-		var totalPrice = 0;
+		var subTotalPrice = 0;
+		let index = 0;
 		for (var itemCode in cartData) {
 		   var itemData = cartData[itemCode];
 		   var itemName = itemData[0];
@@ -65,17 +66,24 @@ function openCart(e){
 		   var itemPrice = parseFloat(itemPriceText.replace('$',''));
 		   var dilivery = 10;
 		   totalCount += itemCount;
-		   totalPrice += itemCount * itemPrice;
-		   var total = totalPrice + dilivery;
+		   subTotalPrice += itemCount * itemPrice;
+		   var total = subTotalPrice + dilivery;
 
 		   totalItems += `<tr>
-			<td>${itemName}<input type="hidden" name="item_name" value="${itemName}"></td>
-			<td>${itemPriceText}<input type="hidden" name="itemPriceText" value="${itemPriceText}"></td>
-			<td>${itemCount}<input type="hidden" name="itemCount" value="${itemCount}"></td>
+
+			
+			<td>${itemName}<input type="hidden" name="item_name_${index}" value="${itemName}"></td>
+
+   			<td>${itemPriceText}<input type="hidden" name="itemPriceText_${index}" value="${itemPriceText}"></td>	
+   				
+			<td>${itemCount}<input type="hidden" name="itemCount_${index}" value="${itemCount}"></td>
+			
 			</tr>`;
+			index++;
 		}
+
 		totalItems += `<tr>
-			<td>Subtotal:</td><td>${totalPrice}<input type="hidden" name="totalPrice" value="${totalPrice}"></td>
+			<td>Subtotal:</td><td>${subTotalPrice}<input type="hidden" name="subTotalPrice" value="${subTotalPrice}"></td>
 			<td>${totalCount}<input type="hidden" name="totalCount" value="${totalCount}"></td>
 			<td>+ Dilivery 10$</td>
 			<br></tr>
@@ -96,3 +104,4 @@ addEvent(d.getElementById('clear_cart'), 'click', function(e){
 	localStorage.removeItem('cart');
 	cartCont.innerHTML = 'Cart emptied.';
 });
+

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse
-from .models import ProductPizza, ProductClassics, ProductSpecials, ProductDrinks
+from .models import ProductPizza, ProductClassics, ProductSpecials, ProductDrinks, OrderUser
 from django.http import HttpResponseRedirect
 from django.views.generic.base import View
 from django.views.generic.edit import FormView
@@ -18,34 +18,66 @@ def main(request):
                'ProductSpecials': specials, 'ProductDrinks': drinks}
     return render(request, 'pizza/index.html', content)
 
-def mail(request):
+def order(request):
+    order = OrderUser.objects.all()
+
     name = request.POST.get("name")
     adress = request.POST.get("adress")
     sender = request.POST.get("sender")
+    subTotalPrice = request.POST.get("subTotalPrice")
+    totalCoutn = request.POST.get("totalCount")
+    total = request.POST.get("total")
+
+    receipt = []
+    for i in range(20):
+        item_name_ = "item_name_" + str(i)
+        itemPriceText_ = "itemPriceText_" + str(i)
+        itemCount_ = "itemCount_" + str(i)
+        productName = request.POST.get(item_name_)
+        productPrice = request.POST.get(itemPriceText_)
+        productCount = request.POST.get(itemCount_)
+        if productName != None:
+            receipt.append(productName)
+        if productPrice != None:
+            receipt.append(productPrice)
+        if productCount != None:
+            receipt.append(productCount)
+    receipt = ' '.join(receipt)
+
+    a = OrderUser.objects.create(OrderUser=receipt, nameUser=name, email=sender, address=adress, total=total)
+    a.save()
+
+    orderUser = (
+            'Your last order in name ' + name + '. ' + receipt + ' ' + ' Delivery address ' + adress +
+            '. Email ' + sender + '. Intermediate cost - ' + subTotalPrice + '$' + '. Quantity - ' + totalCoutn
+            + '. Total cost with delivery - ' + total + '$')
+
+    orderPizzeri = ('New order from ' + name + ' address delivery ' + adress + ' ' +sender + '. Order list: '
+                    + receipt + ' quantity. ' + total + '$')
 
     user = Mail(
-        from_email='Best-pizza@pizza.com',
-        to_emails=sender, # Уведомление о заказе пользователю
-        subject='Now order pizza - Best pizza!',
-        html_content='Hi, ' + name + ' your order pizza. '+ 'Delivery address ' + adress + '. Expect a call to confirm your order! ')
+                from_email='valerjevitchnicolas@yandex.ru',
+                to_emails=sender, # Уведомление пользователю
+                subject='Now order pizza - Best pizza!',
+                html_content= orderUser)
     pizzeria = Mail(
-        from_email='Best-pizza@pizza.com',
-        to_emails='atlasovnv@yandex.ru', # Уведомление о заказе пиццерии
-        subject='Now order pizza - Best pizza!',
-        html_content='New order received from ' + name + ' ' + sender + ' ' + adress)
+                from_email='Best-pizza@pizza.com',
+                to_emails='valerjevitchnicolas@yandex.ru', # Уведомление владельца
+                subject='Now order pizza - Best pizza!',
+                html_content=orderPizzeri)
     try:
-        sg = SendGridAPIClient('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')
+        sg = SendGridAPIClient('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')
         respons = sg.send(user)
         response = sg.send(pizzeria)
         print(respons.status_code)
         print(respons.body)
-
         print(response.status_code)
         print(response.body)
     except Exception as e:
         print(str(e))
-    return HttpResponseRedirect(reverse('pizza:index'))
 
+    content = {'OrderUser': order}
+    return HttpResponseRedirect(reverse('pizza:index'), content)
 
 class RegisterFormView(FormView):
     form_class = UserCreationForm
