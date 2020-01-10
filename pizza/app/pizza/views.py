@@ -66,7 +66,7 @@ def order(request):
                 subject='Now order pizza - Best pizza!',
                 html_content=orderPizzeri)
     try:
-        sg = SendGridAPIClient('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')
+        sg = SendGridAPIClient('API_KEY')
         respons = sg.send(user)
         response = sg.send(pizzeria)
         print(respons.status_code)
