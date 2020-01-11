@@ -48,7 +48,7 @@ def order(request):
     a.save()
 
     orderUser = (
-            'Your last order in name ' + name + '. ' + receipt + ' ' + ' Delivery address ' + adress +
+            'Your order in name ' + name + '. ' + receipt + ' ' + ' Delivery address ' + adress +
             '. Email ' + sender + '. Intermediate cost - ' + subTotalPrice + '$' + '. Quantity - ' + totalCoutn
             + '. Total cost with delivery - ' + total + '$')
 
